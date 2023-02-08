@@ -1,41 +1,36 @@
-import { instagramStalk } from '@bochilteam/scraper'
-
-let handler= async (m, { conn, args, usedPrefix, command }) => {
-    if (!args[0]) throw `Example use ${usedPrefix}${command} <username>`
-    const {
-        username,
-      avatar,
-        name,
-        description,
-        followersH,
-        followingH,
-        postsH,
-    } = await instagramStalk(args[0])
-
-  let data = `
-💌 ${username} » 「 ${name} 」
-🎏 ${followersH}  ғᴏʟʟᴏᴡᴇʀs
-🎀 ${followingH}  ғᴏʟʟᴏᴡɪɴɢ
-📝 ${postsH} Pᴏꜱᴛ
-📑 Bɪᴏ: ${description}
-`.trim()
-
-  let pp = await( await conn.getFile(avatar)).data
-  
-  conn.sendHydrated(m.chat, '「  sᴛᴀʟᴋɪɴɢ 」' , data, pp, `https://instagram.com/${username.replace(/^@/, '')}`, 'Link Profile', '0', 'Nothing', [
-
-      [null],
-
-      [null],
-
-      [null, null]
-
-    ], null,  { asLocation: true })
+import instaloader as drekkemren
+import shlex
+import sys
+import requests
+import os
+import time
+mr_dark = " ".join(map(shlex.quote, sys.argv[1:]))
+darkcoyy = drekkemren.Instaloader()
+profile = drekkemren.Profile.from_username(darkcoyy.context, mr_dark)
+params = {
+    'tkn': '125',
+    'd': '3000',
+    'u': f'https://gramhir.com/profile/{mr_dark}/{profile.userid}',
+    'fs': '0',
+    'w': '1280',
+    'h': '1280',
+    's': '100',
+    'z': '100',
+    'f': 'jpg',
+    'rt': 'jweb',
 }
-
-handler.help = ['igstalk'].map(v => v + ' <username>')
-handler.tags = ['internet']
-
-handler.command = /^(igstalk)$/i
-
-export default handler
+print("Username: ", profile.username)
+print("User ID: ", profile.userid)
+print("Number of Posts: ", profile.mediacount)
+print("Followers: ", profile.followers)
+print("Followees: ", profile.followees)
+print("Bio: ", profile.biography,profile.external_url)
+print ("_© mikaz ~ MultiDevice 2023_")
+#os.system("rm ssweb.jpg")
+#response = requests.get('https://api.pikwy.com/', params=params).text
+#a = response.split('"iurl":"')[1];
+#b = a.split('"')[0];
+#print ('url screenshot: '+b)
+#response = requests.get(b)
+#with open("ssweb.jpg", "w") as f:
+#    f.write(response.text)
