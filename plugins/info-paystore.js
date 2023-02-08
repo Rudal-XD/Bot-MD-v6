@@ -30,7 +30,7 @@ let info = `
 ╰═┅═━––––––๑
 
 *⫹⫺ PAYMENT:*
-• *Pulsa Telkomsel:* [${ppulsa}]
+• *Pulsa Tri:* [${ppulsa}]
 • *Dana:* [${pdana}]
 • *Gopay:* [${pgopay}]
 • *Ovo:* [${povo}]
