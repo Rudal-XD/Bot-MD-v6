@@ -3,7 +3,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
    {
 	title: `${dmenub} List Options`,
 	rows: [
-	{title: "? | anticall",rowld: `${usedPrefix + command} anticall`},
+	{title: "🚫 | anticall",rowld: `${usedPrefix + command} anticall`},
 	{title: "✨ | Welcome", rowId: `${usedPrefix + command} welcome`},
     {title: "🚫 | Delete", rowId: `${usedPrefix + command} delete`},
     {title: "🚫 | autodelvn", rowId: `${usedPrefix + command} autodelvn`},
