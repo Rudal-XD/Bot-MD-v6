@@ -1,29 +1,41 @@
+
+Rudal-XD
+/
+oscar-md-v4
+Public
+forked from YTDANIBOTZ/oscar-md-v4
+Code
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+oscar-md-v4/plugins/enable.js
+
+Alpiii22 Oscar-Md-v4
+ 0 contributors
+217 lines (214 sloc)  6 KB
 let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isROwner }) => {
 	const sections = [
    {
 	title: `${dmenub} List Options`,
 	rows: [
-	{title: "🚫 | anticall",rowld: `${usedPrefix + command} anticall`},
-	{title: "✨ | Welcome", rowId: `${usedPrefix + command} welcome`},
-    {title: "🚫 | Delete", rowId: `${usedPrefix + command} delete`},
-    {title: "🚫 | autodelvn", rowId: `${usedPrefix + command} autodelvn`},
-    {title: "🌎 | Public", rowId: `${usedPrefix + command} public`},
+	    {title: "✨ | Welcome", rowId: `${usedPrefix + command} welcome`},
+	    {title: "🚫 | Delete", rowId: `${usedPrefix + command} delete`},
+	    {title: "🌎 | Public", rowId: `${usedPrefix + command} public`},
 	{title: "🗣️ | Simi", rowId: `${usedPrefix + command} simi`},
-	{title: "🔞 | Nsfw", rowId: `${usedPrefix + command} nsfw`},
-	{title: "🌟 | PremNsfwChat", rowId: `${usedPrefix + command} premnsfwchat`},
 	{title: "🔗 | Antilink", rowId: `${usedPrefix + command} antilink`},
 	{title: "🚫 | Antidelete", rowId: `${usedPrefix + command} antidelete`},
-	{title: "📛 | Antitoxic", rowId: `${usedPrefix + command} antitoxic`},
+	{title: "🔞 | Antitoxic", rowId: `${usedPrefix + command} antitoxic`},
 	{title: "⏏️ | Autolevelup", rowId: `${usedPrefix + command} autolevelup`},
 	{title: "🔎 | Detect", rowId: `${usedPrefix + command} detect`},
 	{title: "📑 | Document", rowId: `${usedPrefix + command} document`},
 	{title: "👤 | WhiteListMyContact", rowId: `${usedPrefix + command} whitelistmycontact`},
-	{title: "❗ | Restrict", rowId: `${usedPrefix + command} restrict`},
+	{title: "❗ | Restrict", rowId: `${usedPrefix + command} restrick`},
 	{title: "😐 | Nyimak", rowId: `${usedPrefix + command} nyimak`},
 	{title: "☑️ | Autoread", rowId: `${usedPrefix + command} autoread`},
-	{title: "💬 | PcOnly", rowId: `${usedPrefix + command} pconly`},
-	{title: "🏢 | GcOnly", rowId: `${usedPrefix + command} gconly`},
-	{title: "📷 | SwOnly", rowId: `${usedPrefix + command} swonly`},
 	]
     },
 ]
@@ -43,18 +55,6 @@ const listMessage = {
   let type = (args[0] || '').toLowerCase()
   let isAll = false, isUser = false
   switch (type) {
-    case 'anticall':
-      if (!m.isGroup) {
-	if (!isOwner) {
-          global.dfail('group',m,conn)
-          throw false
-	}
-      } else if (!isAdmin) {
-        global.dfail('admin',m,conn)
-        throw false
-      }
-      chat.anticall = isEnable
-      break
     case 'welcome':
       if (!m.isGroup) {
         if (!isOwner) {
@@ -97,15 +97,15 @@ const listMessage = {
       }
       chat.delete = !isEnable
       break
-     case 'autodelvn':
-       if (m.isGroup) {
-         if (!(isAdmin || isOwner)) {
-           global.dfail('admin', m, conn)
-           throw false
-         }
-       }
-       chat.autodelvn = isEnable
-       break
+    // case 'autodelvn':
+    //   if (m.isGroup) {
+    //     if (!(isAdmin || isOwner)) {
+    //       global.dfail('admin', m, conn)
+    //       throw false
+    //     }
+    //   }
+    //   chat.autodelvn = isEnable
+    //   break
      case 'document':
        chat.useDocument = isEnable
        break
@@ -126,15 +126,6 @@ const listMessage = {
       }
       chat.antiLink = isEnable
       break
-      case 'antistiker': case 'antisticker': 
-      if (m.isGroup) {
-        if (!(isAdmin || isOwner)) {
-          global.dfail('admin', m, conn)
-          throw false
-        }
-      }
-      chat.antiStiker = isEnable
-      break
       case 'simi':
         if (!isROwner) {
           global.dfail('rowner', m, conn)
@@ -142,56 +133,40 @@ const listMessage = {
         }
       chat.simi = isEnable
       break
-      case 'nsfw':
-        if (m.isGroup) {
-        if (!(isAdmin || isOwner)) {
-          global.dfail('admin', m, conn)
-          throw false
-        }}
-      chat.nsfw = isEnable
-      break
-      case 'premnsfwchat':
-        if (m.isGroup) {
-        if (!isROwner) {
-          global.dfail('rowner', m, conn)
-          throw false
-        }}
-      chat.premnsfw = isEnable
-      break
+     case 'toxic':
+       if (m.isGroup) {
+         if (!(isAdmin || isOwner)) {
+           global.dfail('admin', m, conn)
+           throw false
+         }
+       }
+       chat.antiToxic = !isEnable
+       break
      case 'antitoxic':
        if (m.isGroup) {
-       if (!(isAdmin || isOwner)) {
-       global.dfail('admin', m, conn)
+         if (!(isAdmin || isOwner)) {
+           global.dfail('admin', m, conn)
            throw false
          }
-     }
-      chat.antiToxic = !isEnable
-      break
-      case 'antivirtex':
-       if (m.isGroup) {
-       if (!(isAdmin || isOwner)) {
-       global.dfail('admin', m, conn)
-           throw false
-         }
-     }
-      chat.antiVirtex = !isEnable
-      break
+       }
+       chat.antiToxic = isEnable
+       break
      case 'autolevelup':
        isUser = true
        user.autolevelup = isEnable
        break
-     case 'mycontact':
-     case 'mycontacts':
-     case 'whitelistcontact':
-     case 'whitelistcontacts':
-     case 'whitelistmycontact':
-     case 'whitelistmycontacts':
-       if (!isOwner) {
-         global.dfail('owner', m, conn)
-         throw false
-       }
-       conn.callWhitelistMode = isEnable
-       break
+    // case 'mycontact':
+    // case 'mycontacts':
+    // case 'whitelistcontact':
+    // case 'whitelistcontacts':
+    // case 'whitelistmycontact':
+    // case 'whitelistmycontacts':
+    //   if (!isOwner) {
+    //     global.dfail('owner', m, conn)
+    //     throw false
+    //   }
+    //   conn.callWhitelistMode = isEnable
+    //   break
     case 'restrict':
       isAll = true
       if (!isOwner) {
