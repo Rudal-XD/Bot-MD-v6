@@ -45,10 +45,10 @@ const listMessage = {
   switch (type) {
     case 'anticall':
       if (!m.isGroup) {
-		if (!isOwner) {
-		  global.dfail('group',m,conn)
-		  throw false
-		}
+	if (!isOwner) {
+          global.dfail('group',m,conn)
+          throw false
+	}
       } else if (!isAdmin) {
         global.dfail('admin',m,conn)
         throw false
