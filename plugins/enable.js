@@ -1,22 +1,3 @@
-
-Rudal-XD
-/
-oscar-md-v4
-Public
-forked from YTDANIBOTZ/oscar-md-v4
-Code
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-oscar-md-v4/plugins/enable.js
-
-Alpiii22 Oscar-Md-v4
- 0 contributors
-217 lines (214 sloc)  6 KB
 let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isROwner }) => {
 	const sections = [
    {
